@@ -61,7 +61,7 @@ console.log(arrDataPass,"arrayaaaaaafdataa")
 
 <h1>{data.data.title}</h1>
       <button
-        onClick={() => onClickView(arrDataPass)}
+        onClick={() => onClickView(data)}
         style={{
           padding: "3px 15px 3px 15px",
           borderRadius: "10px",
