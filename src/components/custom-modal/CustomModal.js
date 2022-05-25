@@ -108,10 +108,12 @@ function CustomModal({ open, onClose, data, onClickEdit }) {
             {arrayData.map((val, ind) => {
               
              
-              return <input key={ind} onChange={handleChange} name={arrayKey[ind]} value={arrayValue[ind]} />;
+              return<div  key={ind}> <label> {arrayKey[ind]} </label> <input onChange={handleChange} name={arrayKey[ind]} value={arrayValue[ind]} /> </div> 
             })}
           </div>
-
+          <Button style={{ width: "48%", marginTop: "10px" , display:"flex",justifyContent: "center"}} type="submit">
+            Submit form
+          </Button>
         </Form>
       </Modal>
     </div>
