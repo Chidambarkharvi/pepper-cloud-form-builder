@@ -1,46 +1,40 @@
 import React, { useEffect, useState } from "react";
-import CustomModal from './CustomModal';
+import CustomModal from "./CustomModal";
 
-function Card({ onClick, data, onDelete,onClickView }) {
-  const [title, settitle] = useState({})
+function Card({ onClick, data, onDelete, onClickView }) {
+  const [title, settitle] = useState({});
 
-  const [arrDataPass, setarrDataPass] = useState()
+  const [arrDataPass, setarrDataPass] = useState();
 
   let arrayData = [];
   let arrayKey = [];
-  let arrayValue= []
+  let arrayValue = [];
 
+  useEffect(() => {
+    data.data.map(val => {
+      return settitle(val.title);
+    });
 
+    {
+      data.data &&
+        data.data.map((arr, ind) => {
+          for (let i in arr) {
+            let data = arr[i];
 
-useEffect(() => {
-  data.data.map(val => {
-    return settitle(val.title)
-     {/* return <p style={{fontSize:"25px", fontWeight:"bold"}}>Title : {val.title} </p>; */}
-   })
+            console.log(`${i} : ${data}`);
+            arrayData.push(`${i} : ${data}`);
+            arrayKey.push(`${i}`);
+            arrayValue.push(` ${data}`);
+          }
+        });
+    }
+    const displayData = arrayData.map(val => {
+      return val;
+    });
 
-  {data.data &&
-    data.data.map((arr, ind) => {
- 
-      for (let i in arr) {
-        let data = arr[i];
-
-        console.log(`${i} : ${data}`);
-        arrayData.push(`${i} : ${data}`);
-        arrayKey.push(`${i}`);
-        arrayValue.push(` ${data}`);
-
-
-      }
-    })}
-const displayData = arrayData.map(val => {
-    return val
-  })
-
-  setarrDataPass(displayData)
-  
-},[])
-console.log(arrDataPass,"arrayaaaaaafdataa")
-
+    setarrDataPass(displayData);
+  }, []);
+  console.log(arrDataPass, "arrayaaaaaafdataa");
 
   return (
     <div
@@ -57,13 +51,22 @@ console.log(arrDataPass,"arrayaaaaaafdataa")
         alignItems: "center"
       }}
     >
-     
-
- 
-<p style={{fontSize:"15px"}} > Title : <input style={{outline:"none",borderBottomColor:" black",borderBottomWidth:"5px"}} onChange={(e)=>{
-settitle(e.target.value)
-}} value={title}    /></p>
-<h1>{data.data.title}</h1>
+      <p style={{ fontSize: "15px" }}>
+        {" "}
+        Title :{" "}
+        <input
+          style={{
+            outline: "none",
+            borderBottomColor: " black",
+            borderBottomWidth: "5px"
+          }}
+          onChange={e => {
+            settitle(e.target.value);
+          }}
+          value={title}
+        />
+      </p>
+      <h1>{data.data.title}</h1>
       <button
         onClick={() => onClickView(data)}
         style={{
@@ -109,7 +112,7 @@ settitle(e.target.value)
       </button>
 
       <button
-        onClick={() => onDelete(data,arrayData)}
+        onClick={() => onDelete(data, arrayData)}
         style={{
           padding: "3px 15px 3px 15px",
           borderRadius: "10px",
@@ -129,10 +132,6 @@ settitle(e.target.value)
           Delete
         </p>
       </button>
-
-
-     
-{/* <CustomModal  data={data}  /> */}
 
     </div>
   );

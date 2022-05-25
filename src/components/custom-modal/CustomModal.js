@@ -4,11 +4,8 @@ import { Modal } from "react-responsive-modal";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-// import Card from "../components/Card";
 function CustomModal({ open, onClose, data, onClickEdit }) {
-  console.log(data, "daffffffffffta");
   const [userData, setuserData] = useState([]);
-  console.log(userData, "haj");
 
   let arrayKey = [];
   let arrayValue = [];
@@ -47,12 +44,6 @@ function CustomModal({ open, onClose, data, onClickEdit }) {
     seteditData(userCopy);
   };
 
-  useEffect(() => {
-    // callUserPage();
-    console.log(arrayData, "arrayyyy");
-    console.log(arrayKey, "key");
-    console.log(arrayValue, "value");
-  }, [arrayData]);
 
   return (
     <div>
@@ -82,8 +73,6 @@ function CustomModal({ open, onClose, data, onClickEdit }) {
             }}
           >
             {arrayData.map((val, ind) => {
-              
-             
               return<div  key={ind}> <label> {arrayKey[ind]} </label> <input onChange={handleChange}  name={arrayKey[ind]} value={arrayValue[ind]} /> <br/> </div> 
             })}
           </div>

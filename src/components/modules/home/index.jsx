@@ -95,19 +95,7 @@ const Home = () => {
               width: "90%"
             }}
           >
-            {/* <Card
-              data={userData}
-              onClick={data => {
-                setOpenModal(true);
-                setData(data);
-              }}
-              onDelete={data => {
-                const id = data._id;
-                console.log(id);
-                deleteUser(id);
-                console.log(data);
-              }}
-            /> */}
+           
             {userData.map(obj => (
               <>
                 <Card

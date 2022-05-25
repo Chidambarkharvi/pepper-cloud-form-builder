@@ -6,53 +6,15 @@ import { useNavigate } from "react-router-dom";
 
 function View({ open, onClose, data, onClickEdit }) {
 
-    const [arrDataPass, setarrDataPass] = useState([])
+  let arrayKey = [];
+  let arrayValue = [];
+  let arrayData = [];
 
-    let arrayKey = [];
-    let arrayValue = [];
-    let arrayData = [];
- 
-    console.log(data.data,"vie data");
-
-//     useEffect(() => {
-   
-
-//         {data.data &&
-//           data.data.map((arr, ind) => {
-
-//             for (let i in arr) {
-//               let data = arr[i];
-
-//               console.log(`${i} : ${data}`,"hello 1");
-//               arrayData.push(`${i} : ${data}`)
-//               console.log(arrayData,"inside aarr")
-
-//               setarrDataPass(arrayData)
-//               console.log(arrDataPass, "arr data")
-            
-
-//             }
-//           })}
-//       const displayData = arrayData.map(val => {
-//           return val
-//         })
-// console.log(displayData,"dsadaf")
-//         setarrDataPass(displayData)
-
-//       },[])
-
-
-
-useEffect(() => {
-    // callUserPage();
-    console.log(arrayData, "arrayyyy");
-    console.log(arrayKey, "key");
-    console.log(arrayValue, "value");
-  }, [arrayData]);
+  console.log(data.data, "vie data");
 
   return (
     <div>
-         {data.data &&
+      {data.data &&
         data.data.map((arr, ind) => {
           for (let i in arr) {
             let data = arr[i];
@@ -64,24 +26,19 @@ useEffect(() => {
           }
         })}
 
-    <Modal open={open} onClose={onClose} center>
+      <Modal open={open} onClose={onClose} center>
         <h4>View Details </h4>
         <Form method="post">
-<div style={{width: "300px", padding: "20px"}}>
-{arrayData && arrayData.map((val)=>{
-return <p style={{fontSize: "16px"}}> {val}   </p>
-})}
-
-</div>
-
+          <div style={{ width: "300px", padding: "20px" }}>
+            {arrayData &&
+              arrayData.map(val => {
+                return <p style={{ fontSize: "16px" }}> {val} </p>;
+              })}
+          </div>
         </Form>
       </Modal>
-
-
-      
-
     </div>
-  )
+  );
 }
 
-export default View
+export default View;

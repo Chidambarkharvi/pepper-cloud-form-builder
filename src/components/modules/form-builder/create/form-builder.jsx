@@ -39,14 +39,6 @@ const FormBuilderMainView = function({
 
     postData(dataObj);
 
-    // if (name) {
-    //   const result = Array.from(document.forms[name].elements).reduce(
-    //     (acc, e) => ({ ...acc, [e.name]: e.value }),
-    //     {}
-    //   );
-    //   console.log(result);
-    //   onSubmit({ formName: name, fields: result });
-    // }
     navigate("/home");
   };
 
