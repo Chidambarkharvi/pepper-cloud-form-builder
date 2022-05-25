@@ -8,45 +8,67 @@ function View({ open, onClose, data, onClickEdit }) {
 
     const [arrDataPass, setarrDataPass] = useState([])
 
+    let arrayKey = [];
+    let arrayValue = [];
     let arrayData = [];
  
     console.log(data.data,"vie data");
 
-    useEffect(() => {
+//     useEffect(() => {
    
 
-        {data.data &&
-          data.data.map((arr, ind) => {
+//         {data.data &&
+//           data.data.map((arr, ind) => {
 
-            for (let i in arr) {
-              let data = arr[i];
+//             for (let i in arr) {
+//               let data = arr[i];
 
-              console.log(`${i} : ${data}`,"hello 1");
-              arrayData.push(`${i} : ${data}`)
-              console.log(arrayData,"inside aarr")
+//               console.log(`${i} : ${data}`,"hello 1");
+//               arrayData.push(`${i} : ${data}`)
+//               console.log(arrayData,"inside aarr")
 
-              setarrDataPass(arrayData)
-              console.log(arrDataPass, "arr data")
+//               setarrDataPass(arrayData)
+//               console.log(arrDataPass, "arr data")
             
 
-            }
-          })}
-      const displayData = arrayData.map(val => {
-          return val
-        })
-console.log(displayData,"dsadaf")
-        setarrDataPass(displayData)
+//             }
+//           })}
+//       const displayData = arrayData.map(val => {
+//           return val
+//         })
+// console.log(displayData,"dsadaf")
+//         setarrDataPass(displayData)
 
-      },[])
+//       },[])
+
+
+
+useEffect(() => {
+    // callUserPage();
+    console.log(arrayData, "arrayyyy");
+    console.log(arrayKey, "key");
+    console.log(arrayValue, "value");
+  }, [arrayData]);
 
   return (
     <div>
+         {data.data &&
+        data.data.map((arr, ind) => {
+          for (let i in arr) {
+            let data = arr[i];
+
+            console.log(`${i} : ${data}`);
+            arrayData.push(`${i} : ${data}`);
+            arrayKey.push(`${i}`);
+            arrayValue.push(` ${data}`);
+          }
+        })}
 
     <Modal open={open} onClose={onClose} center>
         <h4>View Details </h4>
         <Form method="post">
 <div style={{width: "300px", padding: "20px"}}>
-{arrDataPass && arrDataPass.map((val)=>{
+{arrayData && arrayData.map((val)=>{
 return <p style={{fontSize: "16px"}}> {val}   </p>
 })}
 

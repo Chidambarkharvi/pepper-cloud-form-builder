@@ -72,7 +72,7 @@ function CustomModal({ open, onClose, data, onClickEdit }) {
         <h4>update Details </h4>
         <Form method="post">
           {/* {displayMapData} */}
-<h1> {arrayData.title} ddd </h1>
+{/* <h1> {arrayData.title} ddd </h1> */}
           <div
             style={{
               display: "flex",
@@ -84,7 +84,7 @@ function CustomModal({ open, onClose, data, onClickEdit }) {
             {arrayData.map((val, ind) => {
               
              
-              return<div  key={ind}> <label> {arrayKey[ind]} </label> <input onChange={handleChange} name={arrayKey[ind]} value={arrayValue[ind]} /> <br/> </div> 
+              return<div  key={ind}> <label> {arrayKey[ind]} </label> <input onChange={handleChange}  name={arrayKey[ind]} value={arrayValue[ind]} /> <br/> </div> 
             })}
           </div>
           <Button style={{ width: "48%", marginTop: "10px" , display:"flex",justifyContent: "center"}} type="submit">
