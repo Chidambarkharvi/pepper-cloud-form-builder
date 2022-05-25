@@ -17,33 +17,9 @@ function CustomModal({ open, onClose, data, onClickEdit }) {
     id: data._id,
     data: data.data
   });
-  //   const [editData, seteditData] = useState([])
 
   const navigate = useNavigate();
-  // const callUserPage = async () => {
-  //   try {
-  //     const url = "/user/details";
-  //     const res = await fetch(url, {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       }
-  //     });
-
-  //     const data = await res.json();
-  //     console.log(data, "daata");
-
-  //     setuserData(data);
-
-  //     if (!res.status === 200) {
-  //       const error = new Error(res.error);
-  //       throw error;
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
+ 
   const updateForm = async () => {
     console.log("yeta");
     try {
@@ -96,11 +72,11 @@ function CustomModal({ open, onClose, data, onClickEdit }) {
         <h4>update Details </h4>
         <Form method="post">
           {/* {displayMapData} */}
-<h1> {arrayData.title} </h1>
+<h1> {arrayData.title} ddd </h1>
           <div
             style={{
               display: "flex",
-              flexdirection: "row",
+              flexdirection: "column",
               justifyContent: "center",
               alignItems: "center"
             }}
@@ -108,7 +84,7 @@ function CustomModal({ open, onClose, data, onClickEdit }) {
             {arrayData.map((val, ind) => {
               
              
-              return<div  key={ind}> <label> {arrayKey[ind]} </label> <input onChange={handleChange} name={arrayKey[ind]} value={arrayValue[ind]} /> </div> 
+              return<div  key={ind}> <label> {arrayKey[ind]} </label> <input onChange={handleChange} name={arrayKey[ind]} value={arrayValue[ind]} /> <br/> </div> 
             })}
           </div>
           <Button style={{ width: "48%", marginTop: "10px" , display:"flex",justifyContent: "center"}} type="submit">

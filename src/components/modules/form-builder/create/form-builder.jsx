@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import NoFormView from "./no-form-view";
 import FormControl from "./form-control";
+import { useNavigate } from "react-router-dom";
+
 
 const FormBuilderMainView = function({
   formData,
@@ -11,6 +13,8 @@ const FormBuilderMainView = function({
 }) {
   const hasFormData = !!(formData && formData.length);
   const [disabled, setDisabled] = useState(true);
+  const navigate = useNavigate();
+
 
   const checkValidity = () => {
     let divEle = document.getElementById("forms-field").children;
@@ -45,6 +49,7 @@ const FormBuilderMainView = function({
     //   console.log(result);
     //   onSubmit({ formName: name, fields: result });
     // }
+    navigate("/home")
   };
 
   const postData = async dataObj => {

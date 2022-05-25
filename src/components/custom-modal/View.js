@@ -38,7 +38,6 @@ console.log(displayData,"dsadaf")
         setarrDataPass(displayData)
 
       },[])
-    //   console.log(arrDataPass,"arrayaaaaaafdataa")
 
   return (
     <div>

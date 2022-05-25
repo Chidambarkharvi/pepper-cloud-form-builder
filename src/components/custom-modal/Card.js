@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CustomModal from './CustomModal';
 
 function Card({ onClick, data, onDelete,onClickView }) {
+  const [title, settitle] = useState({})
 
   const [arrDataPass, setarrDataPass] = useState()
 
@@ -12,7 +13,10 @@ function Card({ onClick, data, onDelete,onClickView }) {
 
 
 useEffect(() => {
-
+  data.data.map(val => {
+    return settitle(val.title)
+     {/* return <p style={{fontSize:"25px", fontWeight:"bold"}}>Title : {val.title} </p>; */}
+   })
 
   {data.data &&
     data.data.map((arr, ind) => {
@@ -55,10 +59,10 @@ console.log(arrDataPass,"arrayaaaaaafdataa")
     >
      
 
-   {data.data.map(val => {
-        return <p style={{fontSize:"25px", fontWeight:"bold"}}>Title : {val.title} </p>;
-      })} 
-
+ 
+<p style={{fontSize:"15px"}} > Title : <input style={{outline:"none",borderBottomColor:" black",borderBottomWidth:"5px"}} onChange={(e)=>{
+settitle(e.target.value)
+}} value={title}    /></p>
 <h1>{data.data.title}</h1>
       <button
         onClick={() => onClickView(data)}
