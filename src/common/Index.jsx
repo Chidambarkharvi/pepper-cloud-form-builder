@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Head from "./Header.jsx";
 import FormBuilder from "../components/modules/form-builder";
+import View from '../components/custom-modal/View.js';
 
 const Index = () => {
   return (

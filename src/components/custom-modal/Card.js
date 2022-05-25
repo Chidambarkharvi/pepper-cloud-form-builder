@@ -1,10 +1,41 @@
 import React, { useEffect, useState } from "react";
+import CustomModal from './CustomModal';
 
-function Card({ onClick, data, onDelete }) {
+function Card({ onClick, data, onDelete,onClickView }) {
+
+  const [arrDataPass, setarrDataPass] = useState()
 
   let arrayData = [];
   let arrayKey = [];
   let arrayValue= []
+
+
+
+useEffect(() => {
+
+
+  {data.data &&
+    data.data.map((arr, ind) => {
+ 
+      for (let i in arr) {
+        let data = arr[i];
+
+        console.log(`${i} : ${data}`);
+        arrayData.push(`${i} : ${data}`);
+        arrayKey.push(`${i}`);
+        arrayValue.push(` ${data}`);
+
+
+      }
+    })}
+const displayData = arrayData.map(val => {
+    return val
+  })
+
+  setarrDataPass(displayData)
+  
+},[])
+console.log(arrDataPass,"arrayaaaaaafdataa")
 
 
   return (
@@ -22,23 +53,34 @@ function Card({ onClick, data, onDelete }) {
         alignItems: "center"
       }}
     >
-      {data.data &&
-        data.data.map((arr, ind) => {
      
-          for (let i in arr) {
-            let data = arr[i];
 
-            console.log(`${i} : ${data}`);
-            arrayData.push(`${i} : ${data}`);
-            arrayKey.push(`${i}`);
-            arrayValue.push(` ${data}`);
+   {data.data.map(val => {
+        return <p style={{fontSize:"25px", fontWeight:"bold"}}>Title : {val.title} </p>;
+      })} 
 
-
-          }
-        })}
-      {arrayData.map(val => {
-        return <p> {val} </p>;
-      })}
+<h1>{data.data.title}</h1>
+      <button
+        onClick={() => onClickView(arrDataPass)}
+        style={{
+          padding: "3px 15px 3px 15px",
+          borderRadius: "10px",
+          backgroundColor: "green",
+          marginBottom: 6
+        }}
+      >
+        <p
+          style={{
+            padding: 0,
+            margin: 0,
+            fontWeight: "bold",
+            fontSize: 12,
+            color: "white"
+          }}
+        >
+          View
+        </p>
+      </button>
 
       <button
         onClick={() => onClick(data)}
@@ -63,7 +105,7 @@ function Card({ onClick, data, onDelete }) {
       </button>
 
       <button
-        onClick={() => onDelete(data)}
+        onClick={() => onDelete(data,arrayData)}
         style={{
           padding: "3px 15px 3px 15px",
           borderRadius: "10px",
@@ -83,6 +125,11 @@ function Card({ onClick, data, onDelete }) {
           Delete
         </p>
       </button>
+
+
+     
+{/* <CustomModal  data={data}  /> */}
+
     </div>
   );
 }

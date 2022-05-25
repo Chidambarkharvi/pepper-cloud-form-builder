@@ -48,7 +48,7 @@ export default function FormBuilder() {
         dispatch={dispatch}
       />
       {/* <FormDataView /> */}
-      <ModalComponent dispatch={dispatch} formData={formData} />
+      <ModalComponent dispatch={dispatch} formData={formData}  />
       
     </div>
   );

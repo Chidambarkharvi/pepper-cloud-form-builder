@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../custom-modal/Card";
 import CustomModal from "../../custom-modal/CustomModal";
+import View from "../../custom-modal/View";
 
 const Home = () => {
   const [userData, setuserData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [openModal1, setOpenModal1] = useState(false);
+
   const [data, setData] = useState();
   // let allData = [];
 
@@ -105,29 +108,28 @@ const Home = () => {
                 console.log(data);
               }}
             /> */}
-          {  userData.map(obj => (
-                <>
-                  <Card
-                    data={obj}
-                    onClick={data => {
-                      setOpenModal(true);
-                      setData(data);
-                    }}
-                    onDelete={data => {
-                      const id = data._id;
-                      console.log(id);
-                      deleteUser(id);
-                      console.log(data);
-                    }}
-                  />
-                </>
-              ))}
+            {userData.map(obj => (
+              <>
+                <Card
+                  data={obj}
+                  onClick={data => {
+                    setOpenModal(true);
 
-
-
-
-
-              
+                    setData(data);
+                  }}
+                  onClickView={data => {
+                    setOpenModal1(true);
+                    setData(data);
+                  }}
+                  onDelete={data => {
+                    const id = data._id;
+                    console.log(id);
+                    deleteUser(id);
+                    console.log(data);
+                  }}
+                />
+              </>
+            ))}
           </div>
           {openModal && (
             <>
@@ -135,6 +137,18 @@ const Home = () => {
                 open={openModal}
                 onClose={() => {
                   setOpenModal(false);
+                }}
+                data={data}
+              />
+            </>
+          )}
+
+          {openModal1 && (
+            <>
+              <View
+                open={openModal1}
+                onClose={() => {
+                  setOpenModal1(false);
                 }}
                 data={data}
               />
